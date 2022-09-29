@@ -1,0 +1,34 @@
+{
+    "name": "Control",
+    "maps": [
+        {
+            "name": "Mouse",
+            "id": "14301e4a-fcff-4210-b61a-efd4276fe5dc",
+            "actions": [
+                {
+                    "name": "Drag",
+                    "type": "Value",
+                    "id": "aa815b10-7693-4555-b5b0-e1e54eed79b9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1819063e-ad0d-4662-a440-ad02c1a521ba",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
