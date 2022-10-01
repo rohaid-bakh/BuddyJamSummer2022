@@ -11,9 +11,14 @@ public class Unit : MonoBehaviour, IDropHandler
     private RectTransform Map;
     [SerializeField]
     private TextMeshProUGUI DummyText;
+
     private RectTransform currSquare;
     float xPos;
     float yPos;
+
+    public Locations currentItem;
+    private MapHandler handler;
+    private int[] coordinates = new int[2];
     void Start()
     {
         // Calculates which square it is in the grid.
@@ -22,17 +27,28 @@ public class Unit : MonoBehaviour, IDropHandler
              xPos = currSquare.anchoredPosition.x / currSquare.rect.width;
              yPos = currSquare.anchoredPosition.y / currSquare.rect.height;
             if (xPos > 0) {
-                xPos  = Mathf.CeilToInt(xPos);
+                xPos  = Mathf.FloorToInt(xPos);
             } else {
-                xPos = Mathf.FloorToInt(xPos);
+                xPos = Mathf.CeilToInt(xPos);
             }
             if (yPos > 0){
-                yPos = Mathf.CeilToInt(yPos);
-            } else {
                 yPos = Mathf.FloorToInt(yPos);
+            } else {
+                yPos = Mathf.CeilToInt(yPos);
             }
-            
+            currentItem = Locations.None;
+            coordinates[0] = (int) xPos;
+            coordinates[1] = (int) yPos;
+
+            //Grab so as to update.
+            handler = FindObjectOfType<MapHandler>();
     }
+    //in order to remove the data that the item is at the current location
+    public void wipeLocation(){
+            handler.deleteLocation(currentItem);
+            currentItem = Locations.None;
+    }
+
     public void OnDrop(PointerEventData data){
        
         if(data.pointerDrag != null){
@@ -40,8 +56,20 @@ public class Unit : MonoBehaviour, IDropHandler
             data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = 
                 currSquare.anchoredPosition + Map.anchoredPosition;
 
-                //Testing purposes only
-            DummyText.text = "This will not be shown to the user. \n At Square : " + xPos +  "," + yPos;
+            
+            DragNDrop script = data.pointerDrag.GetComponent<DragNDrop>();
+            //detail what is on the current square
+            currentItem = script.details.type;
+            //give the location to the item for updating purposes.
+            script.currentLocation = this;
+
+            //adding to dictionary new addition to map 
+            handler.addLocation(currentItem, coordinates);
+
+            //Test.Remove
+            DummyText.text = "This will not be shown to the user.\n" +"The " +data.pointerDrag.GetComponent<DragNDrop>().details.type + " is " +  " \n At Square : " + xPos +  "," + yPos;
         }
     }
+
+
 }

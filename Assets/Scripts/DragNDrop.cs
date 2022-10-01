@@ -10,6 +10,11 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     private Canvas canvas;
     private CanvasGroup group;
 
+    [SerializeField]
+    public Location details;
+
+    public Unit currentLocation;
+
     private void Awake() {
        trans = GetComponent<RectTransform>(); 
        group = GetComponent<CanvasGroup>();
@@ -22,6 +27,11 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
         //getting change of position of the square / by the scale of the canvas
         //Without it the square might not be at the right place.
         trans.anchoredPosition += (eventData.delta/canvas.scaleFactor);
+        if (currentLocation != null){
+            //to clear out a unit when the item is moved around.
+            currentLocation.wipeLocation();
+            currentLocation = null;
+        }
         
     }
 
