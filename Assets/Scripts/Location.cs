@@ -4,12 +4,16 @@ using UnityEngine;
 
 public enum Locations
 {
-    Museum,
-    House,
-    Park,
-    Bridge,
-    Pizzeria,
-    AbandonedMansion,
+    NedNoodle,
+    BeesKnees,
+    PostOffice,
+    TownHall,
+    Hospital,
+    GrasshopperStadium,
+    BearClaw,
+    HopperArcade,
+    HornetsNest,
+    FoxsDen,
     None
 }
 

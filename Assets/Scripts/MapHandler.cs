@@ -6,8 +6,10 @@ public class MapHandler : MonoBehaviour
 {
 
     //TODO: Use bools to weight the scores. Give a percentage on accuracy as well
-    private Dictionary<Locations, int[]> currMap = new Dictionary<Locations, int[]>();
-    private Dictionary<Locations, int[]> answerMap = new Dictionary<Locations, int[]>();
+    //TODO: Change the score display. Need to round to nearest whole number.
+    //TODO: Account for extraneous locations on map that are incorrect even if other map stuff is correct.
+    private Dictionary<Locations, Vector2> currMap = new Dictionary<Locations, Vector2>();
+    private Dictionary<Locations, Vector2> answerMap = new Dictionary<Locations, Vector2>();
 
     [SerializeField]
     private TextMeshProUGUI currentText;
@@ -16,21 +18,33 @@ public class MapHandler : MonoBehaviour
 
 
     void Awake(){
-        //this is for testing purposes only
-        //Will be replaced with setting answerMap to the Map needing to be solved
-        answerMap.Add(Locations.AbandonedMansion, new int[]{0,1});
-        answerMap.Add(Locations.Pizzeria , new int[]{3,1});
-        answerMap.Add(Locations.Museum, new int[]{-2,1});
 
+        //Only present for testing
         if(currentText != null){
             currentText.text += "This is also not shown to the user. \n";
-            foreach(KeyValuePair<Locations, int[]> entry in answerMap){
-                currentText.text += $"The {entry.Key} is at {entry.Value[0]}, {entry.Value[1]}.\n";
+            foreach(KeyValuePair<Locations, Vector2> entry in answerMap){
+                currentText.text += $"The {entry.Key} is at {entry.Value.x}, {entry.Value.y}.\n";
             }
         }
 
     }
-    public void addLocation(Locations place, int[] spot){
+
+//used by LevelHandler to set up the answerkey for checking
+    public void setUpAnswer(Locations[] locations, Vector2[] coordinates){
+        if(locations.Length != coordinates.Length){
+            Debug.LogWarning("There's an uneven amount of locations to coordinates. Please fix this");
+            return;
+        }
+        if(locations.Length == 0 || coordinates.Length == 0){
+            Debug.LogWarning("Either the locations array or coordinates array in the answer key is empty. Please fix this");
+            return;
+        }
+        for(int i = 0 ; i < locations.Length; i++){
+            answerMap.Add(locations[i], coordinates[i]);
+        }
+    }
+    public void addLocation(Locations place, Vector2 spot){
+        //done so that there's not multiple entries of the same place with different coordinates
         if(currMap.ContainsKey(place)){
             deleteLocation(place);
         }
@@ -47,32 +61,39 @@ public class MapHandler : MonoBehaviour
         bool correctPlacesUsed = true; // should probably remove this
         //need to account for when someone putts locations that aren't used on the map and there's a bunch of correct things
         float totalCorrect = 0;
+        float extraPlaces = 0;
 
         if (currMap.Count == answerMap.Count){
             correctNumPlaces = true;
         }
 
-        foreach (KeyValuePair<Locations, int[]> entry in currMap){
+        foreach (KeyValuePair<Locations, Vector2> entry in currMap){
             if(answerMap.ContainsKey(entry.Key)){
-                int[] answer = answerMap[entry.Key];
-                if (answer[0] == entry.Value[0] && answer[1] == entry.Value[1]){
+                Vector2 answer = answerMap[entry.Key];
+                if (answer.x == entry.Value.x && answer.y == entry.Value.y){
                     totalCorrect++;
                 }
             } else {
                 correctPlacesUsed = false;
+                extraPlaces++;
             }
         }
 
+    
+    float scoreFinal = scoreCalculation(totalCorrect, extraPlaces, totalPlaces);
     //Test.Remove
-    Debug.Log($"total Correct: {totalCorrect}");
-    Debug.Log($"total Places: {totalPlaces}");
-    Debug.Log((totalCorrect/totalPlaces) * 100);
-
+    // Debug.Log($"total Correct: {totalCorrect}");
+    // Debug.Log($"total Places: {totalPlaces}");
+    // Debug.Log((totalCorrect/totalPlaces) * 100f);
 
     if(score!= null){
-        score.text = $"Score: {(totalCorrect/totalPlaces) * 100}%";
+        score.text = $"Score: {scoreFinal}%";
     }
 
 
+    }
+
+    private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces){
+        return Mathf.Ceil(((totalCorrect-extraPlaces)/totalPlaces) * 100f);
     }
 }

@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour, IDropHandler
 
     public Locations currentItem;
     private MapHandler handler;
-    private int[] coordinates = new int[2];
+    private Vector2 coordinates = new Vector2();
     void Start()
     {
         // Calculates which square it is in the grid.
@@ -37,8 +37,8 @@ public class Unit : MonoBehaviour, IDropHandler
                 yPos = Mathf.CeilToInt(yPos);
             }
             currentItem = Locations.None;
-            coordinates[0] = (int) xPos;
-            coordinates[1] = (int) yPos;
+            coordinates.x = (int) xPos;
+            coordinates.y = (int) yPos;
 
             //Grab so as to update.
             handler = FindObjectOfType<MapHandler>();
