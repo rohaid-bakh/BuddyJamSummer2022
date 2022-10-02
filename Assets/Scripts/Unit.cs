@@ -67,7 +67,10 @@ public class Unit : MonoBehaviour, IDropHandler
             handler.addLocation(currentItem, coordinates);
 
             //Test.Remove
+            if(DummyText!= null){
             DummyText.text = "This will not be shown to the user.\n" +"The " +data.pointerDrag.GetComponent<DragNDrop>().details.type + " is " +  " \n At Square : " + xPos +  "," + yPos;
+        }
+                
         }
     }
 
