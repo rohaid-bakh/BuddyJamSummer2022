@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
-  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
   - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
+  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
   text:
   - "If you\u2019re new in town and looking for a place to grab a quick bite, Ned\u2019s
     Noodle Shop is perfect.\nYou can\u2019t miss the place, it\u2019s smack dab in
@@ -25,8 +25,8 @@ MonoBehaviour:
     leaving the Noodle Shop, the Mini Mart is just 2 blocks down and 3 blocks over."
   - "When you\u2019re finished shopping, you should head over to the Post Office
     and check things out.\nIt\u2019s directly across the street from the Mini Mart.\n"
+  places: 000000000100000002000000
   coordinates:
   - {x: 0, y: 0}
   - {x: 3, y: -2}
   - {x: 3, y: -1}
-  places: 000000000100000002000000

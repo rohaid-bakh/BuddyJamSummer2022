@@ -61,6 +61,7 @@ public class MapHandler : MonoBehaviour
         bool correctPlacesUsed = true; // should probably remove this
         //need to account for when someone putts locations that aren't used on the map and there's a bunch of correct things
         float totalCorrect = 0;
+        float extraPlaces = 0;
 
         if (currMap.Count == answerMap.Count){
             correctNumPlaces = true;
@@ -74,18 +75,25 @@ public class MapHandler : MonoBehaviour
                 }
             } else {
                 correctPlacesUsed = false;
+                extraPlaces++;
             }
         }
 
+    
+    float scoreFinal = scoreCalculation(totalCorrect, extraPlaces, totalPlaces);
     //Test.Remove
-    Debug.Log($"total Correct: {totalCorrect}");
-    Debug.Log($"total Places: {totalPlaces}");
-    Debug.Log((totalCorrect/totalPlaces) * 100f);
+    // Debug.Log($"total Correct: {totalCorrect}");
+    // Debug.Log($"total Places: {totalPlaces}");
+    // Debug.Log((totalCorrect/totalPlaces) * 100f);
 
     if(score!= null){
-        score.text = $"Score: {(totalCorrect/totalPlaces) * 100f}%";
+        score.text = $"Score: {scoreFinal}%";
     }
 
 
+    }
+
+    private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces){
+        return Mathf.Ceil(((totalCorrect-extraPlaces)/totalPlaces) * 100f);
     }
 }
