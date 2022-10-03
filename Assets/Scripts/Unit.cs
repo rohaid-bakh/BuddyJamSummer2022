@@ -7,12 +7,17 @@ using TMPro;
 public class Unit : MonoBehaviour, IDropHandler
 {
     //TODO:: Test Grid Calculation/See if using the grid layout component + getting the rec max X and mmin Y can solve some issues
+    //TODO:: Ensure no stacking on units.
     [SerializeField] 
     private RectTransform Map;
     [SerializeField]
     private TextMeshProUGUI DummyText;
 
     private RectTransform currSquare;
+    [SerializeField]
+    private RectTransform[] itemBarSpaces;
+    [SerializeField]
+    private RectTransform itemBar;
     float xPos;
     float yPos;
 
@@ -52,6 +57,14 @@ public class Unit : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData data){
        
         if(data.pointerDrag != null){
+            if(currentItem != Locations.None){
+                
+                data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = 
+                itemBarSpaces[(int)currentItem].anchoredPosition + itemBar.anchoredPosition; //write the code so its placed in the correct position
+
+                
+                return;
+            }
             //snaps item to grid
             data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = 
                 currSquare.anchoredPosition + Map.anchoredPosition;
