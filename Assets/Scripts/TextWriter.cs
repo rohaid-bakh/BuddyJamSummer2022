@@ -88,7 +88,14 @@ public class TextWriter : MonoBehaviour
                 //display next character
                 timer += timePerCharacter;
                 characterIndex++;
-
+                 if (characterIndex >= textToWrite.Length)
+                {
+                    //testing to remove invis characters once text is complete
+                    //text = text.Replace("<color=#00000000>", "");
+                    //uiText.text = text;
+                    uiText = null;
+                    return true;
+                }
                 if (characterIndex >= textToWrite.Length)
                 {
                     //testing to remove invis characters once text is complete
@@ -113,7 +120,6 @@ public class TextWriter : MonoBehaviour
                 {
                     uiText.text = text;
                 }
-
 
             }
 
