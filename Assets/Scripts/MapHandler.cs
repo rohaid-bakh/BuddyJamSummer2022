@@ -23,14 +23,6 @@ public class MapHandler : MonoBehaviour
     void Awake(){
         levelHandler = FindObjectOfType<LevelHandler>();
 
-         //Only present for testing
-        // if(currentText != null){
-        //     currentText.text += "This is also not shown to the user. \n";
-        //     foreach(KeyValuePair<Locations, Vector2> entry in answerMap){
-        //         currentText.text += $"The {entry.Key} is at {entry.Value.x}, {entry.Value.y}.\n";
-        //     }
-        // }
-
     }
 
 //used by LevelHandler to set up the answerkey for checking
@@ -50,7 +42,11 @@ public class MapHandler : MonoBehaviour
 
     public void resetMap(){
         answerMap.Clear();
-        currMap.Clear(); // write a way to clear the units as well.
+        currMap.Clear(); 
+        DragNDrop[] items = FindObjectsOfType<DragNDrop>();
+        for(int i = 0 ; i < items.Length ; i++){
+            items[i].resetIcons();
+        }
     }
     public void addLocation(Locations place, Vector2 spot){
         //done so that there's not multiple entries of the same place with different coordinates
@@ -94,11 +90,7 @@ public class MapHandler : MonoBehaviour
 
     
     float scoreFinal = scoreCalculation(totalCorrect, extraPlaces, totalPlaces);
-    //Test.Remove
-    // Debug.Log($"total Correct: {totalCorrect}");
-    // Debug.Log($"total Places: {totalPlaces}");
-    // Debug.Log((totalCorrect/totalPlaces) * 100f);
-
+  
     if(score!= null){
         if(scoreFinal <= 60f){
             score.text = "Hmmm. Maybe try again!";
@@ -109,8 +101,7 @@ public class MapHandler : MonoBehaviour
             score.text = "Superb, it's almost like you live here!";
             levelHandler.loadLevel();
         }
-        // Test Dialogue.
-        // score.text = $"Score: {scoreFinal}%";
+        
     }
 
 

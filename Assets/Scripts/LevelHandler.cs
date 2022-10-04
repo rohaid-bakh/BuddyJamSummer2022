@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //should probably make this a static class
 public class LevelHandler : MonoBehaviour
@@ -18,7 +19,10 @@ public class LevelHandler : MonoBehaviour
     [SerializeField]
     private UIAssistant uiAssistant;
 
-    void Awake()
+    [SerializeField]
+    private Image map;
+
+    void Start()
     {
         loadLevel();
 
@@ -47,9 +51,14 @@ public class LevelHandler : MonoBehaviour
 
             if (Levels[currLevel].characters != null){
                 uiAssistant.npcSprites = Levels[currLevel].characters;
+                 uiAssistant.LoadNewDialogue();
             }
             else{
                 Debug.LogWarning("Levels has an item without sprites. Fix this");
+            }
+
+            if(map != null){
+                map.sprite = Levels[currLevel].map;
             }
         currLevel++;
         }

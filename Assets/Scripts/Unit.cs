@@ -24,6 +24,7 @@ public class Unit : MonoBehaviour, IDropHandler
     public Locations currentItem;
     private MapHandler handler;
     private Vector2 coordinates = new Vector2();
+    private GameObject currObject;
     void Start()
     {
         // Calculates which square it is in the grid.
@@ -52,6 +53,14 @@ public class Unit : MonoBehaviour, IDropHandler
     public void wipeLocation(){
             handler.deleteLocation(currentItem);
             currentItem = Locations.None;
+            currObject = null;
+    }
+
+    public void resetMap(){
+        currObject.GetComponent<RectTransform>().anchoredPosition = 
+        itemBarSpaces[(int)currentItem].anchoredPosition + itemBar.anchoredPosition;
+        currentItem = Locations.None;
+        currObject = null;
     }
 
     public void OnDrop(PointerEventData data){
@@ -68,7 +77,7 @@ public class Unit : MonoBehaviour, IDropHandler
             //snaps item to grid
             data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = 
                 currSquare.anchoredPosition + Map.anchoredPosition;
-
+            currObject = data.pointerDrag;
             
             DragNDrop script = data.pointerDrag.GetComponent<DragNDrop>();
             //detail what is on the current square

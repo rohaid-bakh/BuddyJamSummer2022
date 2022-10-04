@@ -35,3 +35,4 @@ MonoBehaviour:
   - {x: 4, y: -2}
   - {x: 2, y: 2}
   - {x: -1, y: 1}
+  map: {fileID: 21300000, guid: 4d90c9d8c5be1f44f99165effc1a5138, type: 3}

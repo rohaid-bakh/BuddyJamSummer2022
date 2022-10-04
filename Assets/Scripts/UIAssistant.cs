@@ -74,8 +74,7 @@ public class UIAssistant : MonoBehaviour
         npcImage.sprite = npcSprites[messageArrayNumber];
     }
 
-    private void Start()
-    {
+    public void LoadNewDialogue(){
         //TextWriter.AddWriter_Static(messageText, StepOne, textSpeed, true);
 
         string message = messageArray[0];
@@ -85,6 +84,11 @@ public class UIAssistant : MonoBehaviour
         // npcImage.color = colors[messageArrayNumber];
         //change sprite
         npcImage.sprite = npcSprites[messageArrayNumber];
+    }
+
+    private void Start()
+    {
+        LoadNewDialogue();
     }
 
 }
