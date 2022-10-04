@@ -19,6 +19,9 @@ public class UIAssistant : MonoBehaviour
 
     [SerializeField] Image npcImage;
 
+    //added soundManager reference
+    public SoundManager soundManagerReference;
+
 
     // Color[] colors = new Color[] { Color.black, Color.white, Color.yellow, Color.blue };
     public Sprite[] npcSprites;
@@ -45,7 +48,7 @@ public class UIAssistant : MonoBehaviour
         
 
         string message = messageArray[messageArrayNumber];
-        TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true);
+        TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true, soundManagerReference); //added soundManager reference
 
         //change color of sprite
         // npcImage.color = colors[messageArrayNumber];
@@ -66,7 +69,20 @@ public class UIAssistant : MonoBehaviour
         }
 
         string message = messageArray[messageArrayNumber];
-        TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true);
+        TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true, soundManagerReference);
+
+        //change color of sprite
+        // npcImage.color = colors[messageArrayNumber];
+        //change sprite
+        npcImage.sprite = npcSprites[messageArrayNumber];
+    }
+
+    public void LoadNewDialogue()
+    {
+        //TextWriter.AddWriter_Static(messageText, StepOne, textSpeed, true);
+
+        string message = messageArray[0];
+        TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true, soundManagerReference);
 
         //change color of sprite
         // npcImage.color = colors[messageArrayNumber];
@@ -76,15 +92,9 @@ public class UIAssistant : MonoBehaviour
 
     private void Start()
     {
-        //TextWriter.AddWriter_Static(messageText, StepOne, textSpeed, true);
-
-        string message = messageArray[0];
-        TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true);
-
-        //change color of sprite
-        // npcImage.color = colors[messageArrayNumber];
-        //change sprite
-        npcImage.sprite = npcSprites[messageArrayNumber];
+        LoadNewDialogue();
     }
+
+
 
 }
