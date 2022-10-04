@@ -85,15 +85,7 @@ public class TextWriter : MonoBehaviour
                 //display next character
                 timer += timePerCharacter;
                 characterIndex++;
-
-                string text = textToWrite.Substring(0, characterIndex);
-                if (invisibleCharacters)
-                {
-                    text += "<color=#00000000>" + textToWrite.Substring(characterIndex);
-                }
-                uiText.text = text;
-
-                if (characterIndex >= textToWrite.Length)
+                 if (characterIndex >= textToWrite.Length)
                 {
                     //testing to remove invis characters once text is complete
                     //text = text.Replace("<color=#00000000>", "");
@@ -101,6 +93,17 @@ public class TextWriter : MonoBehaviour
                     uiText = null;
                     return true;
                 }
+
+                string text = textToWrite.Substring(0, characterIndex);
+                if (invisibleCharacters)
+                {
+                    text += "<color=#00000000>" + textToWrite.Substring(characterIndex);
+                }
+                if(uiText!= null){
+                uiText.text = text;
+                }
+
+               
             }
 
             return false;

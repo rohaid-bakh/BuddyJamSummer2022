@@ -6,8 +6,10 @@ public class MapHandler : MonoBehaviour
 {
 
     //TODO: Use bools to weight the scores. Give a percentage on accuracy as well
-    //TODO: Change the score display. Need to round to nearest whole number.
-    //TODO: Account for extraneous locations on map that are incorrect even if other map stuff is correct.
+    //TODO: Change the score display. Need to round to nearest whole number. // done
+    //TODO: Account for extraneous locations on map that are incorrect even if other map stuff is correct. // done
+
+    //TODO:: Automatically give a "Hmm You're missing something" if theres too many things on the map 
     private Dictionary<Locations, Vector2> currMap = new Dictionary<Locations, Vector2>();
     private Dictionary<Locations, Vector2> answerMap = new Dictionary<Locations, Vector2>();
 
@@ -15,17 +17,11 @@ public class MapHandler : MonoBehaviour
     private TextMeshProUGUI currentText;
     [SerializeField]
     private TextMeshProUGUI score;
+    private LevelHandler levelHandler;
 
 
     void Awake(){
-
-        //Only present for testing
-        if(currentText != null){
-            currentText.text += "This is also not shown to the user. \n";
-            foreach(KeyValuePair<Locations, Vector2> entry in answerMap){
-                currentText.text += $"The {entry.Key} is at {entry.Value.x}, {entry.Value.y}.\n";
-            }
-        }
+        levelHandler = FindObjectOfType<LevelHandler>();
 
     }
 
@@ -41,6 +37,15 @@ public class MapHandler : MonoBehaviour
         }
         for(int i = 0 ; i < locations.Length; i++){
             answerMap.Add(locations[i], coordinates[i]);
+        }
+    }
+
+    public void resetMap(){
+        answerMap.Clear();
+        currMap.Clear(); 
+        DragNDrop[] items = FindObjectsOfType<DragNDrop>();
+        for(int i = 0 ; i < items.Length ; i++){
+            items[i].resetIcons();
         }
     }
     public void addLocation(Locations place, Vector2 spot){
@@ -72,6 +77,10 @@ public class MapHandler : MonoBehaviour
                 Vector2 answer = answerMap[entry.Key];
                 if (answer.x == entry.Value.x && answer.y == entry.Value.y){
                     totalCorrect++;
+                    //need to write a function that checks the position around the placed icon
+                }else if ((answer.x + 1 == entry.Value.x || answer.x - 1 == entry.Value.x) ||
+                 (answer.y + 1 == entry.Value.y || answer.y - 1 == entry.Value.y)){
+                    totalCorrect += 2f/3f; 
                 }
             } else {
                 correctPlacesUsed = false;
@@ -81,19 +90,25 @@ public class MapHandler : MonoBehaviour
 
     
     float scoreFinal = scoreCalculation(totalCorrect, extraPlaces, totalPlaces);
-    //Test.Remove
-    // Debug.Log($"total Correct: {totalCorrect}");
-    // Debug.Log($"total Places: {totalPlaces}");
-    // Debug.Log((totalCorrect/totalPlaces) * 100f);
-
+  
     if(score!= null){
-        score.text = $"Score: {scoreFinal}%";
+        if(scoreFinal <= 60f){
+            score.text = "Hmmm. Maybe try again!";
+        } else if (scoreFinal < 80f && scoreFinal > 60f){
+            score.text = "Yeah this is close enough, good job!";
+            levelHandler.loadLevel();
+        } else if (scoreFinal >= 80f){
+            score.text = "Superb, it's almost like you live here!";
+            levelHandler.loadLevel();
+        }
+        
     }
 
 
     }
 
     private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces){
-        return Mathf.Ceil(((totalCorrect-extraPlaces)/totalPlaces) * 100f);
+        float correctCount = (totalCorrect - extraPlaces) > 0 ? (totalCorrect - extraPlaces) : 0;
+        return Mathf.Ceil(((correctCount)/totalPlaces) * 100f);
     }
 }

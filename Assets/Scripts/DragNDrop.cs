@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     //TODO:: Add clamping to the items so they can only be within the area of the box or the grid. 
     private RectTransform trans;
@@ -14,6 +14,12 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     public Location details;
 
     public Unit currentLocation;
+
+    [SerializeField]
+    private RectTransform[] itemBar;
+
+    [SerializeField]
+    private RectTransform itemBarPlace;
 
     private void Awake() {
        trans = GetComponent<RectTransform>(); 
@@ -35,6 +41,13 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
         
     }
 
+    public void resetIcons(){
+        if(currentLocation != null){
+            currentLocation.resetMap();
+            currentLocation = null;
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData){
         group.blocksRaycasts = false;
     }
@@ -42,6 +55,19 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     public void OnEndDrag(PointerEventData eventData){
         //allows the unit script/ui to detect the item
          group.blocksRaycasts = true;
+    }
+
+    public void OnDrop(PointerEventData eventData){
+        if(eventData.pointerDrag != null){
+            Debug.Log($"Item Number : {(int)(details.type)}");
+            Debug.Log($"Item Location : {itemBar[(int)(details.type)].anchoredPosition}");
+            Debug.Log($"ItemBar Location: {itemBarPlace.anchoredPosition}");
+            GameObject otherItem = eventData.pointerDrag;
+            Location itemTypes = otherItem.GetComponent<DragNDrop>().details;
+            otherItem.GetComponent<RectTransform>().anchoredPosition = 
+            itemBar[(int)(itemTypes.type)].anchoredPosition + itemBarPlace.anchoredPosition;
+
+        }
     }
     
 }

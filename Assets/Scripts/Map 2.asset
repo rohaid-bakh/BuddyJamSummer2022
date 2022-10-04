@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
+  m_Name: Map 2
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  text:
+  - To get acquainted with the town I would suggest stopping over at Town Hall. It's
+    located in the middle of town.
+  - When it comes to shopping, I only go to the Bee's Knees Mini Mart, they have
+    everything. It's 2 blocks south of Town Hall.
+  - Just down from the Mini Mart is a place called Ned's Noodles. It's one of my
+    favorite spots in town. If you're leaving the Mart, you'll just want to head
+    4 blocks right.
+  - If you're looking for the Hospital, you'll walk 2 blocks north from the lake.
+  - The Post Office is just Northwest of the Town Hall by a block.
+  places: 0300000001000000000000000400000002000000
+  coordinates:
+  - {x: 0, y: 0}
+  - {x: 0, y: -2}
+  - {x: 4, y: -2}
+  - {x: 2, y: 2}
+  - {x: -1, y: 1}
+  map: {fileID: 21300000, guid: 4d90c9d8c5be1f44f99165effc1a5138, type: 3}

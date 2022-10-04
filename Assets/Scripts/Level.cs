@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Level : ScriptableObject
 {
     public Sprite[] characters;
-    [TextArea(2,6)]
+    [TextArea(6,6)]
     //added because Unity 2021 LTS problem with showing index 0 TextArea arrays :/
     [NonReorderable]
     public string[] text;
@@ -17,6 +17,8 @@ public class Level : ScriptableObject
     [Tooltip("The item at index A in places must have the correct position stored in index A in coordinates")]
     public Locations[] places;
     public Vector2[] coordinates;
+
+    public Sprite map;
     
     
 }
