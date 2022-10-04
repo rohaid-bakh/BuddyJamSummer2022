@@ -7,10 +7,7 @@ using UnityEngine.SceneManagement;
 //should probably make this a static class
 public class LevelHandler : MonoBehaviour
 {
-    //TODO:: Add in level progression / Loading in an end screen 
-        //TODO:: Put the icons on the map back to the legend area 
-        //TODO:: Clear the memory in the Units
-        //TODO:: Clear the textbox and set it to automatically load in the first message in a new level.
+   
 
     [SerializeField]
     private Level[] Levels;
@@ -31,6 +28,11 @@ public class LevelHandler : MonoBehaviour
 
     public void loadLevel()
     {
+        if(currLevel == Levels.Length){
+            loadEndScene();
+        }
+
+        Debug.Log($"currlevel {currLevel}");
         if (currLevel >= 0 && currLevel < Levels.Length){
             if(currLevel > 0){
                 //clears the dictionary used.
@@ -64,9 +66,7 @@ public class LevelHandler : MonoBehaviour
         currLevel++;
         }
 
-        if(currLevel == Levels.Length){
-            loadEndScene();
-        }
+        
 
     }
 
