@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //should probably make this a static class
 public class LevelHandler : MonoBehaviour
@@ -63,7 +64,13 @@ public class LevelHandler : MonoBehaviour
         currLevel++;
         }
 
-    
+        if(currLevel == Levels.Length){
+            loadEndScene();
+        }
 
+    }
+
+    private void loadEndScene(){
+        SceneManager.LoadScene("EndScene");
     }
 }
