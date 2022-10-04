@@ -14,6 +14,9 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     public Location details;
 
     public Unit currentLocation;
+    //bool for sound manager
+    public SoundManager soundManagerReference;
+    //public bool clickSoundOn;
 
     [SerializeField]
     private RectTransform[] itemBar;
@@ -27,6 +30,9 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     }
     //Don't think this is necessary but too afraid to remove
     public void OnPointerDown(PointerEventData eventData){
+        //added this to make click sound
+        soundManagerReference.clickSoundOn = true;
+
     }
 
     public void OnDrag(PointerEventData eventData){
@@ -55,6 +61,9 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     public void OnEndDrag(PointerEventData eventData){
         //allows the unit script/ui to detect the item
          group.blocksRaycasts = true;
+        //added sound for when you drop icon
+         Debug.Log("Upsound");
+        soundManagerReference.dropSoundOn = true;
     }
 
     public void OnDrop(PointerEventData eventData){

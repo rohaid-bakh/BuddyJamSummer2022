@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using JetBrains.Annotations;
 
 public class TextWriter : MonoBehaviour
 {
-    private static TextWriter instance;
-    private List<TextWriterSingle> textWriterSingleList;
+    public static TextWriter instance;
+    public List<TextWriterSingle> textWriterSingleList;
 
     private void Awake()
     {
@@ -15,18 +16,18 @@ public class TextWriter : MonoBehaviour
         textWriterSingleList = new List<TextWriterSingle>();
     }
 
-    public static void AddWriter_Static(TMP_Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, bool removeWriterBeforeAdd)
+    public static void AddWriter_Static(TMP_Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, bool removeWriterBeforeAdd, SoundManager soundManagerScript) //added soundManager reference
     {
         if (removeWriterBeforeAdd)
         {
             instance.RemoveWriter(uiText);
         }
-        instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters);
+        instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacters, soundManagerScript);
     }
 
-    private void AddWriter(TMP_Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+    private void AddWriter(TMP_Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, SoundManager soundManagerScript)
     {
-        textWriterSingleList.Add(new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacters));
+        textWriterSingleList.Add(new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacters, soundManagerScript));
     }
 
 
@@ -65,19 +66,21 @@ public class TextWriter : MonoBehaviour
         float timer;
         bool invisibleCharacters;
 
-        public TextWriterSingle(TMP_Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters)
+        SoundManager soundManagerScript;
+
+        public TextWriterSingle(TMP_Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacters, SoundManager soundManagerScript)
         {
             this.uiText = uiText;
             this.textToWrite = textToWrite;
             this.timePerCharacter = timePerCharacter;
             this.invisibleCharacters = invisibleCharacters;
+            this.soundManagerScript = soundManagerScript;
             characterIndex = 0;
         }
 
         //returns true on complete
         public bool Update()
         {
-
             //count down
             timer -= Time.deltaTime;
             while (timer <= 0f)
@@ -93,17 +96,31 @@ public class TextWriter : MonoBehaviour
                     uiText = null;
                     return true;
                 }
+                if (characterIndex >= textToWrite.Length)
+                {
+                    //testing to remove invis characters once text is complete
+                    //text = text.Replace("<color=#00000000>", "");
+                    //uiText.text = text;
+
+                    //audiotesting
+                    Debug.Log("endSound");
+                    soundManagerScript.stopTextSound = true;
+
+                    uiText = null;
+                    return true;
+                }
 
                 string text = textToWrite.Substring(0, characterIndex);
                 if (invisibleCharacters)
                 {
                     text += "<color=#00000000>" + textToWrite.Substring(characterIndex);
                 }
-                if(uiText!= null){
-                uiText.text = text;
+
+                if(uiText != null)
+                {
+                    uiText.text = text;
                 }
 
-               
             }
 
             return false;

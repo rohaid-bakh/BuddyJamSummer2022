@@ -93,6 +93,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   details: {fileID: 11400000, guid: 1b5ca41291df71f4a92af263457b34e3, type: 2}
   currentLocation: {fileID: 0}
+  soundManagerReference: {fileID: 6386764851154116166, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
 --- !u!225 &5155721852065744219
 CanvasGroup:
   m_ObjectHideFlags: 0
