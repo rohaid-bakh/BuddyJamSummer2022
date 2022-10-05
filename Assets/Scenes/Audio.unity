@@ -1099,7 +1099,7 @@ PrefabInstance:
     - target: {fileID: 5155721852065744220, guid: 79eb7a3a71139504c86a12671a75aa65, type: 3}
       propertyPath: details
       value: 
-      objectReference: {fileID: 11400000, guid: d4360f2d632cc9f4ca24ac1f324ee7c9, type: 2}
+      objectReference: {fileID: 11400000, guid: af33235aa099c044abd62fcf5d9e4ee0, type: 2}
     - target: {fileID: 5155721852065744220, guid: 79eb7a3a71139504c86a12671a75aa65, type: 3}
       propertyPath: soundManagerReference
       value: 
@@ -1825,6 +1825,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a8e159d94255114685b3a655d905267, type: 2}
   mapHandler: {fileID: 1703525246}
   uiAssistant: {fileID: 6443425283052701339}
+  map: {fileID: 0}
 --- !u!1001 &6386764851320849920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1835,6 +1836,10 @@ PrefabInstance:
     - target: {fileID: 6386764851154116165, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
       propertyPath: m_Name
       value: AudioSourceObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386764851154116167, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6386764851154116168, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
       propertyPath: m_RootOrder
@@ -1879,6 +1884,10 @@ PrefabInstance:
     - target: {fileID: 6386764851154116168, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386764851154116169, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
