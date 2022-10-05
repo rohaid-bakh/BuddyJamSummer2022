@@ -33,13 +33,13 @@ MonoBehaviour:
   - "The Hornet\u2019s Nest is an old, abandoned warehouse located next to the Bee\u2019s
     Knees Mini Market.\r\n"
   - " If you\u2019re bored and looking for something to do, you should check out
-    Hopper\u2019s arcade and bowling alley. It\u2019s 2 blocks from the stadium."
-  - "If you\u2019re leaving the bowling alley, you should head East for 3 blocks.
-    This will bring you to Ned\u2019s Noodle Shop, one of my favorite places in town."
+    Hopper\u2019s arcade and bowling alley. It\u2019s 4 blocks from the stadium."
+  - "If you\u2019re leaving the stadium, you should head East for 4 blocks. This
+    will bring you to Ned\u2019s Noodle Shop, one of my favorite places in town."
   - "The Bee\u2019s Knees Mini Market has anything and everything you could ever
-    need. It\u2019s just south of Ned\u2019s Noodle Shop."
+    need. It\u2019s south of Ned\u2019s Noodle Shop."
   - "If you\u2019re not into bowling or the arcade you can check out the Fox\u2019s
-    Den Bookstore. It\u2019s just 1 block South of Hopper\u2019s."
+    Den Bookstore. It\u2019s just 2 blocks South of Hopper\u2019s."
   - "I\u2019d suggest avoiding the area, but The Hornet\u2019s Nest is an equal distance
     from both the bowling alley and the Post Office."
   places: 0100000008000000020000000900000007000000000000000600000005000000

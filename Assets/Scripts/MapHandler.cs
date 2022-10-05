@@ -113,7 +113,7 @@ public class MapHandler : MonoBehaviour
     }
 
     IEnumerator delayLoad(){
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         levelHandler.loadLevel();
     }
 
