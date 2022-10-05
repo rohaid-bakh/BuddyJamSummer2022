@@ -13,26 +13,43 @@ MonoBehaviour:
   m_Name: Map 2
   m_EditorClassIdentifier: 
   characters:
+  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
+  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
   - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
   - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
-  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
-  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
+  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
+  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
+  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
   - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
   text:
-  - To get acquainted with the town I would suggest stopping over at Town Hall. It's
-    located in the middle of town.
-  - When it comes to shopping, I only go to the Bee's Knees Mini Mart, they have
-    everything. It's 2 blocks south of Town Hall.
-  - Just down from the Mini Mart is a place called Ned's Noodles. It's one of my
-    favorite spots in town. If you're leaving the Mart, you'll just want to head
-    4 blocks right.
-  - If you're looking for the Hospital, you'll walk 2 blocks north from the lake.
-  - The Post Office is just Northwest of the Town Hall by a block.
-  places: 0300000001000000000000000400000002000000
+  - The Gardenside Grasshoppers are my favorite team. Their stadium is located on
+    the Northwest side of town.
+  - "The Post Office is great if you\u2019re looking to learn more about the town.
+    It\u2019s over on the far Southeast side of the town."
+  - "If you\u2019re only in town for a short while, you have to stop by the Bear
+    Claw Diner, they have the best bagels around. The diner is an equal distance
+    from both the Post Office and Ned\u2019s Noodle Shop."
+  - "The Hornet\u2019s Nest is an old, abandoned warehouse located next to the Bee\u2019s
+    Knees Mini Market.\r\n"
+  - " If you\u2019re bored and looking for something to do, you should check out
+    Hopper\u2019s arcade and bowling alley. It\u2019s 2 blocks from the stadium."
+  - "If you\u2019re leaving the bowling alley, you should head East for 3 blocks.
+    This will bring you to Ned\u2019s Noodle Shop, one of my favorite places in town."
+  - "The Bee\u2019s Knees Mini Market has anything and everything you could ever
+    need. It\u2019s just south of Ned\u2019s Noodle Shop."
+  - "If you\u2019re not into bowling or the arcade you can check out the Fox\u2019s
+    Den Bookstore. It\u2019s just 1 block South of Hopper\u2019s."
+  - "I\u2019d suggest avoiding the area, but The Hornet\u2019s Nest is an equal distance
+    from both the bowling alley and the Post Office."
+  places: 0100000008000000020000000900000007000000000000000600000005000000
   coordinates:
-  - {x: 0, y: 0}
-  - {x: 0, y: -2}
+  - {x: 0, y: -1}
+  - {x: 1, y: -1}
   - {x: 4, y: -2}
-  - {x: 2, y: 2}
-  - {x: -1, y: 1}
+  - {x: -2, y: -2}
+  - {x: -2, y: 0}
+  - {x: 0, y: 2}
+  - {x: 3, y: 2}
+  - {x: -4, y: 2}
   map: {fileID: 21300000, guid: 4d90c9d8c5be1f44f99165effc1a5138, type: 3}
