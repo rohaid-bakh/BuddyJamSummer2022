@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     //TODO:: Add clamping to the items so they can only be within the area of the box or the grid. 
@@ -24,20 +25,33 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     [SerializeField]
     private RectTransform itemBarPlace;
 
+    private Transform label;
+
     private void Awake() {
        trans = GetComponent<RectTransform>(); 
        group = GetComponent<CanvasGroup>();
+       if(transform.childCount != 0){
+        label = transform.GetChild(0);
+       }
+       
+       if(label!= null){
+        label.gameObject.SetActive(false);
+       }
     }
     //Don't think this is necessary but too afraid to remove
     public void OnPointerDown(PointerEventData eventData){
         //added this to make click sound
         soundManagerReference.clickSoundOn = true;
+         
 
     }
 
     public void OnDrag(PointerEventData eventData){
         //getting change of position of the square / by the scale of the canvas
         //Without it the square might not be at the right place.
+        if(label!= null){
+        label.gameObject.SetActive(true);
+       }
         trans.anchoredPosition += (eventData.delta/canvas.scaleFactor);
         if (currentLocation != null){
             //to clear out a unit when the item is moved around.
@@ -64,6 +78,9 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
         //added sound for when you drop icon
          Debug.Log("Upsound");
         soundManagerReference.dropSoundOn = true;
+         if(label!= null){
+        label.gameObject.SetActive(false);
+       }
     }
 
     public void OnDrop(PointerEventData eventData){
@@ -78,5 +95,6 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
 
         }
     }
+
     
 }
