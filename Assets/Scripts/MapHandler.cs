@@ -42,6 +42,10 @@ public class MapHandler : MonoBehaviour
 
     public void resetMap(){
         answerMap.Clear();
+        resetIcons();
+    }
+
+    public void resetIcons(){
         currMap.Clear(); 
         DragNDrop[] items = FindObjectsOfType<DragNDrop>();
         for(int i = 0 ; i < items.Length ; i++){
@@ -83,6 +87,7 @@ public class MapHandler : MonoBehaviour
                 }else if ((answer.x + 1 == entry.Value.x || answer.x - 1 == entry.Value.x) ||
                  (answer.y + 1 == entry.Value.y || answer.y - 1 == entry.Value.y)){
                     totalCorrect += 2f/3f; 
+                    debugCorrect(entry.Key, entry.Value, "close");
                 }else {
                     debugCorrect(entry.Key, entry.Value, "incorrect");
                 }
@@ -123,10 +128,10 @@ public class MapHandler : MonoBehaviour
     }
 
     private void debugCorrect(Locations place , Vector2 Coordinate, string truth){
-        //$"Currently {place} is at {Coordinate}. This is {truth}. "
+        //
         if(debugText!= null)
         {
-            debugText.text += "";
+            debugText.text += $"Currently {place} is at {Coordinate}. This is {truth}. ";
         }
         
     }
