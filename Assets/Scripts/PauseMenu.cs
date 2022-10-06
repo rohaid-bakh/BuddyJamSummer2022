@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public bool isPaused;
 
+    public bool textFinished;
+
     private Control control;
 
     public SoundManager soundManager;
@@ -41,7 +43,14 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        soundManager.stopTextSound = true;
+
+        //**OLD SFX
+        /*soundManager.stopTextSound = true;
+        soundManager.EndTextSound();*/
+
+        //NEW SFX
+        FindObjectOfType<AudioManager>().Stop("TextSFX");
+
         isPaused = true;
     }
 
@@ -49,11 +58,26 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        if (!soundManager.textFinished)
+
+        //**OLD SFX
+        /*if (!soundManager.textFinished)
         {
             soundManager.ButtonPressedSFX();
+        }*/
+
+        //NEW SFX
+        if (!textFinished)
+        {
+            FindObjectOfType<AudioManager>().Play("TextSFX");
         }
+
+
         isPaused = false;
+    }
+
+    public void ResetText()
+    {
+        textFinished = false;
     }
 
     private void OnEnable()

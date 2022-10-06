@@ -25,11 +25,7 @@ public class SoundManager : MonoBehaviour
     }
     private void Update()
     {
-        if (stopTextSound || textFinished)
-        {
-            source.Stop();
-            stopTextSound = false;
-        }
+
 
         if (clickSoundOn)
         {
@@ -65,6 +61,17 @@ public class SoundManager : MonoBehaviour
         Debug.Log("playTextSound");
         source.PlayOneShot(audioClips[1]);
         textFinished = false;
+        Debug.Log("newtext");
+    }
+
+    public void EndTextSound()
+    {
+        if (stopTextSound || textFinished)
+        {
+            source.Stop();
+            stopTextSound = false;
+            //textFinished = false;
+        }
     }
 
 }

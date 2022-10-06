@@ -2620,10 +2620,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioSourceObject
       objectReference: {fileID: 0}
-    - target: {fileID: 6386764851154116167, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 6386764851154116168, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2667,10 +2663,6 @@ PrefabInstance:
     - target: {fileID: 6386764851154116168, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6386764851154116169, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8405e2b2c2f06e64da24360b8c815452, type: 3}
