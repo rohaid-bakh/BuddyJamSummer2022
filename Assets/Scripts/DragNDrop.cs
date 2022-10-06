@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
-public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerUpHandler
 {
     //TODO:: Add clamping to the items so they can only be within the area of the box or the grid. 
     private RectTransform trans;
@@ -89,12 +89,35 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
             Debug.Log($"Item Location : {itemBar[(int)(details.type)].anchoredPosition}");
             Debug.Log($"ItemBar Location: {itemBarPlace.anchoredPosition}");
             GameObject otherItem = eventData.pointerDrag;
-            Location itemTypes = otherItem.GetComponent<DragNDrop>().details;
-            otherItem.GetComponent<RectTransform>().anchoredPosition = 
+            Location itemTypes ;
+            if(otherItem.GetComponent<DragNDrop>() != null){
+                   itemTypes = otherItem.GetComponent<DragNDrop>().details;
+                    if( otherItem.GetComponent<RectTransform>() != null){
+                        otherItem.GetComponent<RectTransform>().anchoredPosition = 
             itemBar[(int)(itemTypes.type)].anchoredPosition + itemBarPlace.anchoredPosition;
+                    }
+            }
+           
+          
+            
 
         }
     }
 
+    public void OnPointerUp(PointerEventData eventData){
+        if(currentLocation == null){
+                if(eventData.pointerPress != null){
+                    GameObject otherItem = eventData.pointerPress;
+                    Location itemTypes;
+                    if(otherItem.GetComponent<DragNDrop>() != null){
+                   itemTypes = otherItem.GetComponent<DragNDrop>().details;
+                    if( otherItem.GetComponent<RectTransform>() != null){
+                        otherItem.GetComponent<RectTransform>().anchoredPosition = 
+            itemBar[(int)(itemTypes.type)].anchoredPosition + itemBarPlace.anchoredPosition;
+                    }
+            }
+                }
+        }
+    }
     
 }
