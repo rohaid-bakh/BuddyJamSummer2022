@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
 
     private Control control;
 
+    public SoundManager soundManager;
+
     private void Awake()
     {
         control = new Control();
@@ -39,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        soundManager.stopTextSound = true;
         isPaused = true;
     }
 
@@ -46,6 +49,10 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        if (!soundManager.textFinished)
+        {
+            soundManager.ButtonPressedSFX();
+        }
         isPaused = false;
     }
 

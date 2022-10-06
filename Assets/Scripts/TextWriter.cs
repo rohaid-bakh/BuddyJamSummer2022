@@ -97,7 +97,7 @@ public class TextWriter : MonoBehaviour
 
                     //audiotesting
                     Debug.Log("endSound");
-                    soundManagerScript.stopTextSound = true;
+                    soundManagerScript.textFinished = true;
 
                     uiText = null;
                     return true;
