@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/NPCText.unity
     guid: 96aeb15a441f13444b8b6288517f0303
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: bd163351e4bc345448dc877f540b3f2f
   m_configObjects: {}
