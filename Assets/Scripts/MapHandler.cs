@@ -111,4 +111,13 @@ public class MapHandler : MonoBehaviour
         float correctCount = (totalCorrect - extraPlaces) > 0 ? (totalCorrect - extraPlaces) : 0;
         return Mathf.Ceil(((correctCount)/totalPlaces) * 100f);
     }
+
+    private void debugCorrect(Locations place , Vector2 Coordinate, string truth){
+        //
+        if(debugText!= null)
+        {
+            debugText.text += $"Currently {place} is at {Coordinate}. This is {truth}. ";
+        }
+        //if this shows up, the merge went through
+    }
 }
