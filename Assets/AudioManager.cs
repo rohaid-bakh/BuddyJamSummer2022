@@ -9,6 +9,9 @@ public class AudioManager : MonoBehaviour
     [NonReorderable]
     public Sound[] sounds;
 
+    //for muting/unmuting audio
+    public bool muted;
+
     void Awake()
     {
         foreach (Sound s in sounds)
@@ -26,7 +29,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("BackgroundMusic");
-        Play("TextSFX");
+        //Play("TextSFX");
     }
     public void Play (string name)
     {
@@ -39,4 +42,35 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
     }
+
+    public void MuteAudio()
+    {
+        if (!muted)
+        {
+            //mute
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            for (int i = 0; i < sounds.Length; i++)
+            {
+                s = sounds[i];
+                s.source.mute = true;
+                muted = true;
+            }
+        }
+
+        else
+        {
+            //unmute
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            for (int i = 0; i < sounds.Length; i++)
+            {
+                s = sounds[i];
+                s.source.mute = false;
+                muted = false;
+            }
+        }
+
+    }
+
+
+ 
 }
