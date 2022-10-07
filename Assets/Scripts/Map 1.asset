@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
   m_Name: Map 1
   m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
+  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
+  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
+  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
+  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
   text:
   - "If you\u2019re new in town and looking for a place to grab a quick bite, Ned\u2019s
     Noodle Shop is perfect.\nYou can\u2019t miss the place, it\u2019s smack dab in
@@ -26,7 +32,6 @@ MonoBehaviour:
     Shop.\r\n"
   - "In between the Hospital and the Noodle Shop is the Town\u2019s City Hall. It's
     closer to the Noodle Shop than the Hospital though.\n"
-  characters: 0000000001000000010000000200000001000000
   places: 0000000001000000020000000400000003000000
   coordinates:
   - {x: 0, y: 0}
