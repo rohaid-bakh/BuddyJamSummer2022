@@ -22,9 +22,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        if(pauseMenu!= null){
         pauseMenu.SetActive(false);
-        }
     }
 
     public void PauseButtonPressed()
