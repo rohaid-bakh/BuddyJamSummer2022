@@ -133,6 +133,6 @@ public class MapHandler : MonoBehaviour
         {
             debugText.text += $"Currently {place} is at {Coordinate}. This is {truth}. ";
         }
-        
+        //if this shows up, the merge went through
     }
 }
