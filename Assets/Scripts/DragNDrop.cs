@@ -30,13 +30,8 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     }
     //Don't think this is necessary but too afraid to remove
     public void OnPointerDown(PointerEventData eventData){
-        /*//**OLD SOUND FX**
         //added this to make click sound
-        Debug.Log("ClickSound");
-        soundManagerReference.clickSoundOn = true;*/
-
-        //NEW SFX
-        FindObjectOfType<AudioManager>().Play("PressIconSFX");
+        soundManagerReference.clickSoundOn = true;
 
     }
 
@@ -66,14 +61,9 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
     public void OnEndDrag(PointerEventData eventData){
         //allows the unit script/ui to detect the item
          group.blocksRaycasts = true;
-
-        /*//**OLD SOUND FX**
         //added sound for when you drop icon
          Debug.Log("Upsound");
-        soundManagerReference.dropSoundOn = true;*/
-
-        //NEW SFX
-        FindObjectOfType<AudioManager>().Play("DropIconSFX");
+        soundManagerReference.dropSoundOn = true;
     }
 
     public void OnDrop(PointerEventData eventData){

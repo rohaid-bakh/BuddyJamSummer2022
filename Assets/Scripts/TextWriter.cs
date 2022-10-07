@@ -88,22 +88,23 @@ public class TextWriter : MonoBehaviour
                 //display next character
                 timer += timePerCharacter;
                 characterIndex++;
-
+                 if (characterIndex >= textToWrite.Length)
+                {
+                    //testing to remove invis characters once text is complete
+                    //text = text.Replace("<color=#00000000>", "");
+                    //uiText.text = text;
+                    uiText = null;
+                    return true;
+                }
                 if (characterIndex >= textToWrite.Length)
                 {
                     //testing to remove invis characters once text is complete
                     //text = text.Replace("<color=#00000000>", "");
                     //uiText.text = text;
 
-                    /*//**OLD SOUND FX**
                     //audiotesting
                     Debug.Log("endSound");
-                    soundManagerScript.textFinished = true;
-                    soundManagerScript.EndTextSound();*/
-
-                    //NEW SFX
-                    FindObjectOfType<AudioManager>().Stop("TextSFX");
-                    FindObjectOfType<PauseMenu>().textFinished = true;
+                    soundManagerScript.stopTextSound = true;
 
                     uiText = null;
                     return true;

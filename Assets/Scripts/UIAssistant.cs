@@ -65,7 +65,7 @@ public class UIAssistant : MonoBehaviour
 
         if (messageArrayNumber < 0)
         {
-            messageArrayNumber = messageArray.Length;
+            messageArrayNumber = 3;
         }
 
         string message = messageArray[messageArrayNumber];
