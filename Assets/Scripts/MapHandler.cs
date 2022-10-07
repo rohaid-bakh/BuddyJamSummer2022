@@ -14,7 +14,7 @@ public class MapHandler : MonoBehaviour
     private Dictionary<Locations, Vector2> answerMap = new Dictionary<Locations, Vector2>();
 
     [SerializeField]
-    private TextMeshProUGUI currentText;
+    private TextMeshProUGUI debugText;
     [SerializeField]
     private TextMeshProUGUI score;
     private LevelHandler levelHandler;
@@ -42,6 +42,10 @@ public class MapHandler : MonoBehaviour
 
     public void resetMap(){
         answerMap.Clear();
+        resetIcons();
+    }
+
+    public void resetIcons(){
         currMap.Clear(); 
         DragNDrop[] items = FindObjectsOfType<DragNDrop>();
         for(int i = 0 ; i < items.Length ; i++){
@@ -61,6 +65,7 @@ public class MapHandler : MonoBehaviour
     }
 
     public void checkFinal(){
+        debugText.text = "";
         float totalPlaces = answerMap.Count;
         bool correctNumPlaces = false;
         bool correctPlacesUsed = true; // should probably remove this
@@ -77,11 +82,16 @@ public class MapHandler : MonoBehaviour
                 Vector2 answer = answerMap[entry.Key];
                 if (answer.x == entry.Value.x && answer.y == entry.Value.y){
                     totalCorrect++;
+                    debugCorrect(entry.Key, entry.Value, "correct");
                     //need to write a function that checks the position around the placed icon
                 }else if ((answer.x + 1 == entry.Value.x || answer.x - 1 == entry.Value.x) ||
                  (answer.y + 1 == entry.Value.y || answer.y - 1 == entry.Value.y)){
                     totalCorrect += 2f/3f; 
+                    debugCorrect(entry.Key, entry.Value, "close");
+                }else {
+                    debugCorrect(entry.Key, entry.Value, "incorrect");
                 }
+                
             } else {
                 correctPlacesUsed = false;
                 extraPlaces++;
@@ -96,10 +106,10 @@ public class MapHandler : MonoBehaviour
             score.text = "Hmmm. Maybe try again!";
         } else if (scoreFinal < 80f && scoreFinal > 60f){
             score.text = "Yeah this is close enough, good job!";
-            levelHandler.loadLevel();
+           StartCoroutine(delayLoad());
         } else if (scoreFinal >= 80f){
             score.text = "Superb, it's almost like you live here!";
-            levelHandler.loadLevel();
+            StartCoroutine(delayLoad());
         }
         
     }
@@ -107,8 +117,22 @@ public class MapHandler : MonoBehaviour
 
     }
 
+    IEnumerator delayLoad(){
+        yield return new WaitForSeconds(2f);
+        levelHandler.loadLevel();
+    }
+
     private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces){
         float correctCount = (totalCorrect - extraPlaces) > 0 ? (totalCorrect - extraPlaces) : 0;
         return Mathf.Ceil(((correctCount)/totalPlaces) * 100f);
+    }
+
+    private void debugCorrect(Locations place , Vector2 Coordinate, string truth){
+        //
+        if(debugText!= null)
+        {
+            debugText.text += $"Currently {place} is at {Coordinate}. This is {truth}. ";
+        }
+        
     }
 }
