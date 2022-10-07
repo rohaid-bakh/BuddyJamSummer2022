@@ -17,14 +17,16 @@ public class UIAssistant : MonoBehaviour
 
     [SerializeField] int messageArrayNumber = 0;
 
-    [SerializeField] Image npcImage;
+    // [SerializeField] Image npcImage;
 
     //added soundManager reference
     public SoundManager soundManagerReference;
 
 
     // Color[] colors = new Color[] { Color.black, Color.white, Color.yellow, Color.blue };
-    public Sprite[] npcSprites;
+    public Characters[] npcSprites;
+    // Dog = 0 , Frog = 1 , Raccoon = 3
+    public GameObject[] Sprites;
 
 //changed so that it can be accessed by LevelHandler
     public string[] messageArray;
@@ -49,11 +51,11 @@ public class UIAssistant : MonoBehaviour
 
         string message = messageArray[messageArrayNumber];
         TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true, soundManagerReference); //added soundManager reference
-
+        LoadSprite(npcSprites[messageArrayNumber]);
         //change color of sprite
         // npcImage.color = colors[messageArrayNumber];
         //change sprite
-        npcImage.sprite = npcSprites[messageArrayNumber];
+        
 
         
     }
@@ -65,16 +67,17 @@ public class UIAssistant : MonoBehaviour
 
         if (messageArrayNumber < 0)
         {
-            messageArrayNumber = 2;
+            messageArrayNumber = messageArray.Length - 1;
         }
 
         string message = messageArray[messageArrayNumber];
         TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true, soundManagerReference);
 
+        LoadSprite(npcSprites[messageArrayNumber]);
         //change color of sprite
         // npcImage.color = colors[messageArrayNumber];
         //change sprite
-        npcImage.sprite = npcSprites[messageArrayNumber];
+       
     }
 
     public void LoadNewDialogue()
@@ -83,13 +86,32 @@ public class UIAssistant : MonoBehaviour
 
         string message = messageArray[0];
         TextWriter.AddWriter_Static(messageText, message, textSpeed, true, true, soundManagerReference);
-
+        LoadSprite(npcSprites[0]);
         //change color of sprite
         // npcImage.color = colors[messageArrayNumber];
         //change sprite
-        npcImage.sprite = npcSprites[messageArrayNumber];
-    }
 
+    }
+    private void LoadSprite(Characters current){
+
+        switch(current){
+            case Characters.Dog: 
+                Sprites[0].SetActive(true);
+                Sprites[1].SetActive(false);
+                Sprites[2].SetActive(false);
+                break;
+            case Characters.Frog:
+                Sprites[0].SetActive(false);
+                Sprites[1].SetActive(true);
+                Sprites[2].SetActive(false);
+                break;
+            case Characters.Raccoon:
+                Sprites[0].SetActive(false);
+                Sprites[1].SetActive(false);
+                Sprites[2].SetActive(true);
+                break;
+        }
+    }
     private void Start()
     {
         LoadNewDialogue();

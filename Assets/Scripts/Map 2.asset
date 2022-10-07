@@ -12,16 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
   m_Name: Map 2
   m_EditorClassIdentifier: 
-  characters:
-  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
-  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
-  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
-  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
-  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
-  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
-  - {fileID: 21300000, guid: 8748362a1b00f4949aca47dec4f73c86, type: 3}
-  - {fileID: 21300000, guid: e6bb763e6fe862145a0018821ef74684, type: 3}
-  - {fileID: 21300000, guid: 7375b8da41e259447a01aabf695612d1, type: 3}
   text:
   - The Gardenside Grasshoppers are my favorite team. Their stadium is located on
     the Northwest side of town.
@@ -42,6 +32,7 @@ MonoBehaviour:
     Den Bookstore. It\u2019s just 2 blocks South of Hopper\u2019s."
   - "I\u2019d suggest avoiding the area, but The Hornet\u2019s Nest is an equal distance
     from both the bowling alley and the Post Office."
+  characters: 000000000100000002000000000000000200000002000000010000000200000002000000
   places: 0100000008000000020000000900000007000000000000000600000005000000
   coordinates:
   - {x: 0, y: -1}

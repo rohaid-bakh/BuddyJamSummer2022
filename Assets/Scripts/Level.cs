@@ -6,11 +6,12 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
 {
-    public Sprite[] characters;
+    
     [TextArea(6,6)]
     //added because Unity 2021 LTS problem with showing index 0 TextArea arrays :/
     [NonReorderable]
     public string[] text;
+    public Characters[] characters;
 
     //The item at index A in places must have the correct position stored in index A in coordinates
     [Header("Answer Key")]
