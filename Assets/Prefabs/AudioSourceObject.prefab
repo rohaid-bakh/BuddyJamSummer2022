@@ -151,6 +151,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c13594a5bd60d744e8dfc5ce1965844f, type: 3}
   - {fileID: 8300000, guid: f79fc6ad67d32a94e99ba059882cd3db, type: 3}
   stopTextSound: 0
+  textFinished: 0
   clickSoundOn: 1
   dropSoundOn: 1
 --- !u!82 &6386764851154116169

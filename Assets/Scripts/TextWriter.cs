@@ -95,9 +95,15 @@ public class TextWriter : MonoBehaviour
                     //text = text.Replace("<color=#00000000>", "");
                     //uiText.text = text;
 
+                    /*//**OLD SOUND FX**
                     //audiotesting
                     Debug.Log("endSound");
-                    soundManagerScript.stopTextSound = true;
+                    soundManagerScript.textFinished = true;
+                    soundManagerScript.EndTextSound();*/
+
+                    //NEW SFX
+                    FindObjectOfType<AudioManager>().Stop("TextSFX");
+                    FindObjectOfType<PauseMenu>().textFinished = true;
 
                     uiText = null;
                     return true;
