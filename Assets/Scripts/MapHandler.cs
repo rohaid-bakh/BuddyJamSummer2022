@@ -6,65 +6,87 @@ public class MapHandler : MonoBehaviour
 {
 
     //TODO: Use bools to weight the scores. Give a percentage on accuracy as well
-    //TODO: Change the score display. Need to round to nearest whole number. // done
-    //TODO: Account for extraneous locations on map that are incorrect even if other map stuff is correct. // done
-
     //TODO:: Automatically give a "Hmm You're missing something" if theres too many things on the map 
     private Dictionary<Locations, Vector2> currMap = new Dictionary<Locations, Vector2>();
     private Dictionary<Locations, Vector2> answerMap = new Dictionary<Locations, Vector2>();
+    private Dictionary<Locations, string> userMap = new Dictionary<Locations, string>();
 
     [SerializeField]
     private TextMeshProUGUI debugText;
+    private LevelHandler levelHandler;
+    [Header("Results Menu")]
     [SerializeField]
     private TextMeshProUGUI score;
-    private LevelHandler levelHandler;
+    [SerializeField]
+    private GameObject Resultsmenu;
+    [SerializeField]
+    private TextMeshProUGUI hint;
 
-
-    void Awake(){
+    void Awake()
+    {
         levelHandler = FindObjectOfType<LevelHandler>();
+        if (Resultsmenu != null)
+        {
+            Resultsmenu.SetActive(false);
+        }
 
     }
 
-//used by LevelHandler to set up the answerkey for checking
-    public void setUpAnswer(Locations[] locations, Vector2[] coordinates){
-        if(locations.Length != coordinates.Length){
+    //used by LevelHandler to set up the answerkey for checking
+    public void setUpAnswer(Locations[] locations, Vector2[] coordinates)
+    {
+        if (locations.Length != coordinates.Length)
+        {
             Debug.LogWarning("There's an uneven amount of locations to coordinates. Please fix this");
             return;
         }
-        if(locations.Length == 0 || coordinates.Length == 0){
+        if (locations.Length == 0 || coordinates.Length == 0)
+        {
             Debug.LogWarning("Either the locations array or coordinates array in the answer key is empty. Please fix this");
             return;
         }
-        for(int i = 0 ; i < locations.Length; i++){
+        for (int i = 0; i < locations.Length; i++)
+        {
             answerMap.Add(locations[i], coordinates[i]);
         }
     }
 
-    public void resetMap(){
+    public void resetMap()
+    {
         answerMap.Clear();
         resetIcons();
     }
 
-    public void resetIcons(){
-        currMap.Clear(); 
+    public void resetIcons()
+    {
+        currMap.Clear();
         DragNDrop[] items = FindObjectsOfType<DragNDrop>();
-        for(int i = 0 ; i < items.Length ; i++){
+        for (int i = 0; i < items.Length; i++)
+        {
             items[i].resetIcons();
         }
     }
-    public void addLocation(Locations place, Vector2 spot){
+    public void addLocation(Locations place, Vector2 spot)
+    {
         //done so that there's not multiple entries of the same place with different coordinates
-        if(currMap.ContainsKey(place)){
+        if (currMap.ContainsKey(place))
+        {
             deleteLocation(place);
         }
         currMap.Add(place, spot);
     }
 
-    public void deleteLocation(Locations place){
+    public void deleteLocation(Locations place)
+    {
         currMap.Remove(place);
     }
 
-    public void checkFinal(){
+    public void checkFinal()
+    {   
+        if(hint!= null){
+            hint.text = "";
+        }
+        userMap.Clear();
         debugText.text = "";
         float totalPlaces = answerMap.Count;
         bool correctNumPlaces = false;
@@ -73,63 +95,112 @@ public class MapHandler : MonoBehaviour
         float totalCorrect = 0;
         float extraPlaces = 0;
 
-        if (currMap.Count == answerMap.Count){
+        if (currMap.Count == answerMap.Count)
+        {
             correctNumPlaces = true;
         }
 
-        foreach (KeyValuePair<Locations, Vector2> entry in currMap){
-            if(answerMap.ContainsKey(entry.Key)){
+        foreach (KeyValuePair<Locations, Vector2> entry in currMap)
+        {
+            if (answerMap.ContainsKey(entry.Key))
+            {
                 Vector2 answer = answerMap[entry.Key];
-                if (answer.x == entry.Value.x && answer.y == entry.Value.y){
+                if (answer.x == entry.Value.x && answer.y == entry.Value.y)
+                {
                     totalCorrect++;
                     debugCorrect(entry.Key, entry.Value, "correct");
+                    userMap.Add(entry.Key, "correct");
                     //need to write a function that checks the position around the placed icon
-                }else if ((answer.x + 1 == entry.Value.x || answer.x - 1 == entry.Value.x) ||
-                 (answer.y + 1 == entry.Value.y || answer.y - 1 == entry.Value.y)){
-                    totalCorrect += 2f/3f; 
-                    debugCorrect(entry.Key, entry.Value, "close");
-                }else {
-                    debugCorrect(entry.Key, entry.Value, "incorrect");
                 }
-                
-            } else {
+                else if ((answer.x + 1 == entry.Value.x || answer.x - 1 == entry.Value.x) ||
+                 (answer.y + 1 == entry.Value.y || answer.y - 1 == entry.Value.y))
+                {
+                    totalCorrect += 2f / 3f;
+                    debugCorrect(entry.Key, entry.Value, "close");
+                    userMap.Add(entry.Key, "close");
+                }
+                else
+                {
+                    debugCorrect(entry.Key, entry.Value, "incorrect");
+                    userMap.Add(entry.Key, "incorrect");
+                }
+
+            }
+            else
+            {
+                userMap.Add(entry.Key, "not on the map");
                 correctPlacesUsed = false;
                 extraPlaces++;
             }
         }
 
-    
-    float scoreFinal = scoreCalculation(totalCorrect, extraPlaces, totalPlaces);
-  
-    if(score!= null){
-        if(scoreFinal <= 60f){
-            score.text = "Hmmm. Maybe try again!";
-        } else if (scoreFinal < 80f && scoreFinal > 60f){
-            score.text = "Yeah this is close enough, good job!";
-           StartCoroutine(delayLoad());
-        } else if (scoreFinal >= 80f){
-            score.text = "Superb, it's almost like you live here!";
-            StartCoroutine(delayLoad());
+
+        float scoreFinal = scoreCalculation(totalCorrect, extraPlaces, totalPlaces);
+
+        if (score != null)
+        {
+            if (scoreFinal <= 60f)
+            {
+                if (Resultsmenu != null && score != null)
+                {
+                    Resultsmenu.SetActive(true);
+                    score.text = "Hmmm. Maybe try again!";
+                    hintText();
+                }
+
+            }
+            else if (scoreFinal < 80f && scoreFinal > 60f)
+            {
+                if (Resultsmenu != null && score != null)
+                {
+                    Resultsmenu.SetActive(true);
+                    score.text = "Yeah this is close enough, good job!";
+                    StartCoroutine(delayLoad());
+                }
+            }
+            else if (scoreFinal >= 80f)
+            {
+                if (Resultsmenu != null && score != null)
+                {
+                    Resultsmenu.SetActive(true);
+                    score.text = "Superb, it's almost like you live here!";
+                    StartCoroutine(delayLoad());
+                }
+            }
+
         }
-        
-    }
 
 
     }
 
-    IEnumerator delayLoad(){
+    IEnumerator delayLoad()
+    {
         yield return new WaitForSeconds(2f);
         levelHandler.loadLevel();
     }
 
-    private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces){
+    private void hintText(){
+        if(hint != null){
+                        int count = 0;
+                        foreach(KeyValuePair<Locations, string> entry in userMap){
+                            hint.text+=$"You've placed {entry.Key} in a {entry.Value} position.\n";
+                            count++;
+                            if(count >=3){
+                                break;
+                            }
+                        }
+                    }
+    }
+    private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces)
+    {
         float correctCount = (totalCorrect - extraPlaces) > 0 ? (totalCorrect - extraPlaces) : 0;
-        return Mathf.Ceil(((correctCount)/totalPlaces) * 100f);
+        return Mathf.Ceil(((correctCount) / totalPlaces) * 100f);
     }
 
-    private void debugCorrect(Locations place , Vector2 Coordinate, string truth){
+    private void debugCorrect(Locations place, Vector2 Coordinate, string truth)
+    {
         //
-        if(debugText!= null)
+        if (debugText != null)
         {
             debugText.text += $"Currently {place} is at {Coordinate}. This is {truth}. ";
         }

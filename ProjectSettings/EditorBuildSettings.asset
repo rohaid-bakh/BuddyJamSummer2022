@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0382a02999ea770429b3108d1bc0eb5e
   - enabled: 1
+    path: Assets/Scenes/Feedback.unity
+    guid: d93622b6e25666e48b9a63d6d5ec992a
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: ee9d2b8a8ba6f0d47bf795b4db3a0481
   - enabled: 0
