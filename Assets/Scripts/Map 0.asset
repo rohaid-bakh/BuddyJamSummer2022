@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
   m_Name: Map 0
   m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
+  - {fileID: 21300000, guid: 3b3451e86b80c5b4490e1995e8f93dee, type: 3}
   text:
   - 'Welcome! '
   - 'You are a map maker! '
@@ -29,7 +38,6 @@ MonoBehaviour:
     customer! '
   - 'Remember, you don''t count diagonally when measuring out blocks, it''s only
     up, down, side to side.  '
-  characters: 0300000003000000030000000300000003000000030000000300000003000000
   places: 000000000100000007000000
   coordinates:
   - {x: 0, y: 0}
