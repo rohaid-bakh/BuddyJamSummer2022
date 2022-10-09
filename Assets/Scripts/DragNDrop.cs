@@ -94,9 +94,6 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler , IBeginDragHandler,
 
     public void OnDrop(PointerEventData eventData){
         if(eventData.pointerDrag != null){
-            Debug.Log($"Item Number : {(int)(details.type)}");
-            Debug.Log($"Item Location : {itemBar[(int)(details.type)].anchoredPosition}");
-            Debug.Log($"ItemBar Location: {itemBarPlace.anchoredPosition}");
             GameObject otherItem = eventData.pointerDrag;
             Location itemTypes ;
             if(otherItem.GetComponent<DragNDrop>() != null){

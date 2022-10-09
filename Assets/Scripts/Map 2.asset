@@ -13,26 +13,32 @@ MonoBehaviour:
   m_Name: Map 2
   m_EditorClassIdentifier: 
   text:
-  - The Gardenside Grasshoppers are my favorite team. Their stadium is located on
-    the Northwest side of town.
-  - "The Post Office is great if you\u2019re looking to learn more about the town.
-    It\u2019s over on the far Southeast side of the town."
-  - "If you\u2019re only in town for a short while, you have to stop by the Bear
-    Claw Diner, they have the best bagels around. The diner is an equal distance
-    from both the Post Office and Ned\u2019s Noodle Shop."
-  - "The Hornet\u2019s Nest is an old, abandoned warehouse located next to the Bee\u2019s
-    Knees Mini Market.\r\n"
-  - " If you\u2019re bored and looking for something to do, you should check out
-    Hopper\u2019s arcade and bowling alley. It\u2019s 4 blocks from the stadium."
-  - "If you\u2019re leaving the stadium, you should head East for 4 blocks. This
-    will bring you to Ned\u2019s Noodle Shop, one of my favorite places in town."
-  - "The Bee\u2019s Knees Mini Market has anything and everything you could ever
-    need. It\u2019s south of Ned\u2019s Noodle Shop."
-  - "If you\u2019re not into bowling or the arcade you can check out the Fox\u2019s
-    Den Bookstore. It\u2019s just 2 blocks South of Hopper\u2019s."
-  - "I\u2019d suggest avoiding the area, but The Hornet\u2019s Nest is an equal distance
-    from both the bowling alley and the Post Office."
-  characters: 000000000100000002000000000000000200000002000000010000000200000002000000
+  - The Gardenside Grasshoppers are my favorite team and play every Sunday night.
+    My buddies and I never miss a game. Their <b>stadium is located on the Northwest
+    side of town</b>.
+  - "With the Grasshoppers only playing one day a week, I spend the rest of my time
+    hanging out at Rock\u2019s Arcade and Bowling Alley. <b>It\u2019s just 2 blocks
+    South and 2 blocks East</b>. "
+  - "<b>Just 3 blocks East of the Noodle shop</b> you\u2019ll find the Bear Claw
+    Diner. They\u2019re open late and serve the best milkshakes. \r\n"
+  - "If you\u2019re new in town, checking out the <b>Post Office</b> is a great way
+    to learn about the city. <b>You can find it over on the far Southeast side of
+    town</b>."
+  - "A lot of the sports fans hang out at Rock\u2019s Arcade and Bowling Alley, but
+    it\u2019s much too busy for me. One of my favorite spots is the <b>Fox\u2019s
+    Den Bookstore. It\u2019s 2 blocks South of the Arcade</b>."
+  - "<b>3 blocks West and 1 block North of the Post Office you\u2019ll find the hornet\u2019s
+    nest.</b>The place is abandoned, but I would suggest avoiding the area. \r"
+  - "I spend quite a bit of time over at the <b>Hornet\u2019s Nest</b>, but if you\u2019re
+    new in town I suggest avoiding the place. If so, <b>you can find it located next
+    to the Bee\u2019s Knees Mini Mart\r</b>."
+  - "<b>4 blocks East of the Stadium you\u2019ll spot Ned\u2019s Noodle Shop.</b>
+    Ned\u2019s a good pal of mine. In fact, tell him I sent you and he might just
+    give you a discount. \r"
+  - "<b>The Bee\u2019s Knees Mini Mart</b> has anything and everything you could
+    ever need. I make all of my essential purchases at the Mart.<b> It\u2019s South
+    of Ned\u2019s Noodle Shop</b>."
+  characters: 010000000100000001000000000000000200000002000000010000000200000002000000
   places: 0100000008000000020000000900000007000000000000000600000005000000
   coordinates:
   - {x: 0, y: -1}

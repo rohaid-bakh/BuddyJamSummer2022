@@ -46,38 +46,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: ButtonClickSFX
-    clip: {fileID: 8300000, guid: 8ec3a698115adcd488b3676716980112, type: 3}
-    volume: 0.75
+    clip: {fileID: 8300000, guid: d8a41f81ef21efc40a339f0b08cf8bfd, type: 3}
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PressIconSFX
-    clip: {fileID: 8300000, guid: dfc1b373c6298eb46a31dd8c32199b7a, type: 3}
+    clip: {fileID: 8300000, guid: 4313529864d020d47b4cf73ae0626a75, type: 3}
     volume: 0.15
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: DropIconSFX
-    clip: {fileID: 8300000, guid: c13594a5bd60d744e8dfc5ce1965844f, type: 3}
+    clip: {fileID: 8300000, guid: b41afe39da98e424eb159141b8785158, type: 3}
     volume: 0.45
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: FinishClickSFX
-    clip: {fileID: 8300000, guid: f79fc6ad67d32a94e99ba059882cd3db, type: 3}
+    clip: {fileID: 8300000, guid: 44cf02a53cab2af41b5c63a631cb8e1b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: ebb049c6aa52d91438e28e49c1768060, type: 3}
-    volume: 0.406
+    clip: {fileID: 8300000, guid: 0305eac32e4ef1a49a86c0058e2c5a8e, type: 3}
+    volume: 0.2
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: TextSFX
-    clip: {fileID: 8300000, guid: 8faa10de27393c5488459d2b8b3c283b, type: 3}
-    volume: 0.241
+    clip: {fileID: 8300000, guid: c8339aae3f2d851409f01077ea4cc480, type: 3}
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Reset
+    clip: {fileID: 8300000, guid: 30e8725c89066214bbb93cd86a926e5c, type: 3}
+    volume: 0.178
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bad
+    clip: {fileID: 8300000, guid: 7f9ccc793e521a0489b8964bb58cc9bb, type: 3}
+    volume: 0.178
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Good
+    clip: {fileID: 8300000, guid: 8aa047b8f903e3c4091883e0deb30756, type: 3}
+    volume: 0.178
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Best
+    clip: {fileID: 8300000, guid: b369cd10e7a79004d8e0307f91bd00ca, type: 3}
+    volume: 0.178
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Negative
+    clip: {fileID: 8300000, guid: 30e8725c89066214bbb93cd86a926e5c, type: 3}
+    volume: 0.178
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  muted: 0

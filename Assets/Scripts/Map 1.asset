@@ -13,20 +13,21 @@ MonoBehaviour:
   m_Name: Map 1
   m_EditorClassIdentifier: 
   text:
-  - "If you\u2019re new in town and looking for a place to grab a quick bite, Ned\u2019s
-    Noodle Shop is perfect.\nYou can\u2019t miss the place, it\u2019s smack dab in
-    the middle of town.\r\\n"
-  - "If noodles aren\u2019t your thing, you can always head over to the Bee\u2019s
-    Knees Mini Mart,\n they have anything and everything you could possibly need.\nWhen
-    leaving the Noodle Shop, the Mini Mart is just 2 blocks down and 3 blocks over."
-  - "When you\u2019re finished shopping, you should head over to the Post Office
-    and check things out.\nIt\u2019s directly across the street from the Mini Mart.\n"
-  - "If you\u2019re ever in a bind, you\u2019ll want to head over to the Gardenside
-    Hospital. It\u2019s on the far-left side of town, just up the road from the Noodle
-    Shop.\r\n"
-  - "In between the Hospital and the Noodle Shop is the Town\u2019s City Hall. It's
-    closer to the Noodle Shop than the Hospital though.\n"
-  characters: 0000000001000000010000000200000001000000
+  - "If you\u2019re new in town and looking for a place to grab a quick bite, <b>Ned\u2019s
+    Noodle Shop</b> is perfect.\nYou can\u2019t miss the place, it\u2019s smack dab
+    in the <b>middle of the map</b>\r."
+  - "The <b>Bee\u2019s Knees Mini Mart</b>, has anything and everything you could
+    possibly need.\nWhen leaving the <b>Noodle Shop, the Mini Mart is just 2 blocks
+    down and 3 blocks right</b>."
+  - "When you\u2019re finished shopping, you should head over to the <b>Post Office</b>
+    and check things out.\nIt\u2019s directly <b>across the street from the Mini
+    Mart</b>.\n"
+  - "If you\u2019re ever in a bind, you\u2019ll want to head over to the <b>Gardenside
+    Hospital. It\u2019s on the far-west side of town, just keep walking from the
+    Noodle Shop</b>\n.\r"
+  - "<b>In between the Hospital and the Noodle Shop is the Town\u2019s City Hall.
+    It's closer to the Noodle Shop than the Hospital though</b>."
+  characters: 0000000001000000020000000200000001000000
   places: 0000000001000000020000000400000003000000
   coordinates:
   - {x: 0, y: 0}

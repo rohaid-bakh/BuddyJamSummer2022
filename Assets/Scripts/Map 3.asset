@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
+  m_Name: Map 3
+  m_EditorClassIdentifier: 
+  text:
+  - The Gardenside Grasshoppers are playing a championship game this weekend; you
+    should check it out. My buddies and I will be in the front row. <b>The stadium
+    is pretty far North, even further than The Bear Claw Diner</b>.
+  - "Before a game I like to stock up on the essentials, well mostly just snacks
+    and face paint but the <b>Bee\u2019s Knees Mini Mart</b> has that and so much
+    more. You should definitely check it out. <b>It\u2019s located south of the post
+    office across the street from the Bear Claw Diner</b>."
+  - " If you plan on staying for a while, you\u2019ll want to check out the <b>Post
+    Office</b>. Miss H can get you all set up with a box. <b>It\u2019s 3 blocks away
+    from the Stadium, Noodle Shop, Mini Mart, and the Bear Claw Diner</b>."
+  - "If you\u2019re looking for a good book, the <b>Fox\u2019s Den Bookstore</b>
+    has plenty to choose from. If you find yourself having trouble, let me know and
+    I\u2019ll suggest a few. <b>You can find the shop 2 blocks South of Ned\u2019s
+    Noodle Shop</b>."
+  - "<b>The Hospital is 2 blocks North of the Hornet\u2019s Nest</b>.  If you ever
+    find yourself in a sticky situation, you\u2019ll want to head over to the Gardenside
+    Hospital. They have great service and even better, they never ask questions."
+  - "My man Ned fixes the best noodles in town just <b>3 blocks East of the Hospital</b>.
+    You can\u2019t miss the place; <b>it\u2019s sitting in between the Fox\u2019s
+    Den Bookstore and the Grasshopper\u2019s Stadium</b>. "
+  characters: 010000000100000000000000000000000200000002000000
+  places: 0000000005000000090000000400000008000000020000000100000006000000
+  coordinates:
+  - {x: -1, y: 0}
+  - {x: -1, y: 2}
+  - {x: -1, y: -2}
+  - {x: -4, y: 0}
+  - {x: -4, y: -2}
+  - {x: 1, y: 1}
+  - {x: 1, y: -1}
+  - {x: 2, y: -1}
+  map: {fileID: 21300000, guid: 83a90548fa5d0dd49881ddf900012be0, type: 3}

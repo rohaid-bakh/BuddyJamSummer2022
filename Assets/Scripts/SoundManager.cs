@@ -18,7 +18,6 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         //audiotesting
-        Debug.Log("playSound");
         source.PlayOneShot(audioClips[1]);
         playingTextSFX = true;
 
@@ -29,7 +28,6 @@ public class SoundManager : MonoBehaviour
 
         if (clickSoundOn)
         {
-            Debug.Log("clickSound");
             source.PlayOneShot(audioClips[3]);
             clickSoundOn = false;
         }
@@ -58,10 +56,8 @@ public class SoundManager : MonoBehaviour
         source.PlayOneShot(audioClips[0]);
 
         //plays text sound
-        Debug.Log("playTextSound");
         source.PlayOneShot(audioClips[1]);
         textFinished = false;
-        Debug.Log("newtext");
     }
 
     public void EndTextSound()

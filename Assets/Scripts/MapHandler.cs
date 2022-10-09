@@ -10,6 +10,7 @@ public class MapHandler : MonoBehaviour
     private Dictionary<Locations, Vector2> currMap = new Dictionary<Locations, Vector2>();
     private Dictionary<Locations, Vector2> answerMap = new Dictionary<Locations, Vector2>();
     private Dictionary<Locations, string> userMap = new Dictionary<Locations, string>();
+    private AudioManager audioPlayer;
 
     [SerializeField]
     private TextMeshProUGUI debugText;
@@ -29,6 +30,7 @@ public class MapHandler : MonoBehaviour
         {
             Resultsmenu.SetActive(false);
         }
+        audioPlayer = FindObjectOfType<AudioManager>();
 
     }
 
@@ -82,8 +84,9 @@ public class MapHandler : MonoBehaviour
     }
 
     public void checkFinal()
-    {   
-        if(hint!= null){
+    {
+        if (hint != null)
+        {
             hint.text = "";
         }
         userMap.Clear();
@@ -108,7 +111,6 @@ public class MapHandler : MonoBehaviour
                 if (answer.x == entry.Value.x && answer.y == entry.Value.y)
                 {
                     totalCorrect++;
-                    debugCorrect(entry.Key, entry.Value, "correct");
                     userMap.Add(entry.Key, "correct");
                     //need to write a function that checks the position around the placed icon
                 }
@@ -116,19 +118,17 @@ public class MapHandler : MonoBehaviour
                  (answer.y + 1 == entry.Value.y || answer.y - 1 == entry.Value.y))
                 {
                     totalCorrect += 2f / 3f;
-                    debugCorrect(entry.Key, entry.Value, "close");
                     userMap.Add(entry.Key, "close");
                 }
                 else
                 {
-                    debugCorrect(entry.Key, entry.Value, "incorrect");
                     userMap.Add(entry.Key, "incorrect");
                 }
 
             }
             else
             {
-                userMap.Add(entry.Key, "not on the map");
+                userMap.Add(entry.Key, "not on map");
                 correctPlacesUsed = false;
                 extraPlaces++;
             }
@@ -146,6 +146,10 @@ public class MapHandler : MonoBehaviour
                     Resultsmenu.SetActive(true);
                     score.text = "Hmmm. Maybe try again!";
                     hintText();
+                    if (audioPlayer != null)
+                    {
+                        audioPlayer.Play("Bad");
+                    }
                 }
 
             }
@@ -155,6 +159,10 @@ public class MapHandler : MonoBehaviour
                 {
                     Resultsmenu.SetActive(true);
                     score.text = "Yeah this is close enough, good job!";
+                    if (audioPlayer != null)
+                    {
+                        audioPlayer.Play("Good");
+                    }
                     StartCoroutine(delayLoad());
                 }
             }
@@ -164,6 +172,10 @@ public class MapHandler : MonoBehaviour
                 {
                     Resultsmenu.SetActive(true);
                     score.text = "Superb, it's almost like you live here!";
+                    if (audioPlayer != null)
+                    {
+                        audioPlayer.Play("Best");
+                    }
                     StartCoroutine(delayLoad());
                 }
             }
@@ -179,17 +191,48 @@ public class MapHandler : MonoBehaviour
         levelHandler.loadLevel();
     }
 
-    private void hintText(){
-        if(hint != null){
-                        int count = 0;
-                        foreach(KeyValuePair<Locations, string> entry in userMap){
-                            hint.text+=$"You've placed {entry.Key} in a {entry.Value} position.\n";
-                            count++;
-                            if(count >=3){
-                                break;
-                            }
-                        }
+    private void hintText()
+    {
+        if (hint != null)
+        {
+            if (userMap.Count == 0)
+            {
+                hint.text = "Hey, you didn't put any icons!";
+                return;
+            }
+
+            //randomly generate a number
+            int map =  userMap.Count;
+            int count = 0;
+            while (count < 3 && count < map)
+            {
+                int locationNum = Random.Range(0, 9);
+                if (userMap.ContainsKey((Locations)locationNum))
+                {
+                    
+                    Locations loc = (Locations)locationNum;
+                    string status = userMap[loc];
+                    count++;
+                    if (status == "incorrect")
+                    {
+                        hint.text += $"You've placed {loc} in an {status} position.\n";
                     }
+                    else if (status == "correct")
+                    {
+                        hint.text += $"You've placed {loc} in the {status} position.\n";
+                    }
+                    else if (status == "not on map")
+                    {
+                        hint.text += $"{loc} isn't supposed to be on the map. \n";
+                    } else if (status == "close")
+                    {
+                        hint.text += $"{loc} is close to where it's supposed to be. \n";
+                    }
+                    userMap.Remove(loc);
+                }
+
+            }
+        }
     }
     private float scoreCalculation(float totalCorrect, float extraPlaces, float totalPlaces)
     {

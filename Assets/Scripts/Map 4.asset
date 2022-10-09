@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
+  m_Name: Map 4
+  m_EditorClassIdentifier: 
+  text:
+  - "<b>The Gardenside Hospital is across the street from Town Hall</b>. The place
+    is massive, you can\u2019t miss it."
+  - "If you ever find yourself in need of a pregame munchy you should head over to
+    the <b>Bee\u2019s Knees Mini Mart</b>. There\u2019s a good chance they\u2019ll
+    have whatever you\u2019re craving. <b>It\u2019s 1 block South and 5 blocks West
+    of the Noodle Shop</b>."
+  - "<b>On the outskirts of the city, in the Northeastern area you\u2019ll find the
+    Post Office</b>. Since you\u2019re new in town you should stop by and chat with
+    Miss H. She knows everything there is to know about the town."
+  - "<b>As you come into town, just 3 blocks Down from the Post Office you\u2019ll
+    pass by Ned\u2019s Noodle Shop</b>. The food is fantastic but the clientele is
+    a little peculiar."
+  - "Personally, I avoid the place, but if you\u2019re looking for <b>Town Hall you
+    can find it close to the center of town, North of the Mini Mart</b>."
+  - "You\u2019re going to want to steer clear of that <b>old warehouse. It\u2019s
+    just 2 blocks West and 2 blocks South of the Hospital</b>. No seriously, unless
+    you want an unplanned trip to the Hospital keep clear of the Hornet\u2019s Nest."
+  characters: 010000000100000000000000000000000200000002000000
+  places: 080000000400000003000000010000000200000000000000
+  coordinates:
+  - {x: -4, y: -2}
+  - {x: -2, y: 0}
+  - {x: -1, y: 0}
+  - {x: -1, y: -2}
+  - {x: 4, y: 2}
+  - {x: 4, y: -1}
+  map: {fileID: 21300000, guid: f8ef54eb7d63cf2408d65ad8af531f52, type: 3}

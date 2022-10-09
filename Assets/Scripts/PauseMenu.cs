@@ -29,7 +29,6 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseButtonPressed()
     {
-        Debug.Log("Pause Pressed");
         if (!isPaused)
         {
             PauseGame();

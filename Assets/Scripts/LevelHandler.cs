@@ -31,8 +31,6 @@ public class LevelHandler : MonoBehaviour
         if(currLevel == Levels.Length){
             loadEndScene();
         }
-
-        Debug.Log($"currlevel {currLevel}");
         if (currLevel >= 0 && currLevel < Levels.Length){
             if(currLevel > 0){
                 //clears the dictionary used.

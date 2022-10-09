@@ -22,14 +22,14 @@ MonoBehaviour:
   - 'You''ll use that info to drag icons on to their rightful place on the grid map.
     If all things go well, you''ll gain some satisfied customers and be able to move
     on to the next guests. '
-  - 'You can try it now. Go ahead and place Ned''s Noodle shop in the middle of the
-    map and Bee''s Knees Mini Mart just two blocks west of there. '
-  - 'Then place the arcade 3 blocks away from the noodle shop, above the mini mart.
-    When you''re done, press finish. If things look good you''ll move on to a real
-    customer! '
+  - 'You can try it now. Go ahead and place <b>Ned''s Noodle shop in the middle of
+    the map</b> and <b>Bee''s Knees Mini Mart just two blocks west</b> of there. '
+  - 'Then place the <b>arcade 3 blocks away from the noodle shop, above the mini
+    mart</b>. When you''re done, press <b>finish</b>. If things look good you''ll
+    move on to a real customer! '
   - 'Remember, you don''t count diagonally when measuring out blocks, it''s only
     up, down, side to side.  '
-  characters: 0300000003000000030000000300000003000000030000000300000003000000
+  characters: 0100000001000000010000000100000001000000010000000100000001000000
   places: 000000000100000007000000
   coordinates:
   - {x: 0, y: 0}
