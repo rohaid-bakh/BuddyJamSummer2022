@@ -6,5 +6,6 @@ public enum Characters{
 
     Frog,
     Dog,
-    Raccoon
+    Raccoon,
+    Tutorial,
 }

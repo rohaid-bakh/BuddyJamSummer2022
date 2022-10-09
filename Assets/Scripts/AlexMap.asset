@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2d869d37ed4d84f972433b9ad078c5, type: 3}
+  m_Name: AlexMap
+  m_EditorClassIdentifier: 
+  text:
+  - "I love bowling! I always bring along my friends. There\u2019s this trail near
+    the lake that takes us straight to the bowling alley. The trail is just outside
+    my work.\r \n"
+  - "I work with Frog at the Bee\u2019s Knees Mini Mart. She\u2019s always dragging
+    me to this Bowling Alley up north. "
+  - "I, personally, prefer the bookstore just a couple blocks east of our workplace.
+    It\u2019s got a nice lakefront view where I can relax and watch the seagulls
+    on the dock. "
+  - "Yeahhh, I\u2019m not much for reading, but I do love to eat! Whenever we all
+    go out bowling I take everyone on a 5 block trip to the noodle shop in the far
+    west of town. Nothing like some post bowling grub. "
+  - "I wish I didn\u2019t have to work so much or I\u2019d go out with them more
+    often. I\u2019m working overtime at the post office. It\u2019s smack in the middle
+    between the noodle shop and where Frog and Dog work. "
+  characters: 0000000001000000010000000200000002000000
+  places: 0000000001000000070000000900000002000000
+  coordinates:
+  - {x: -4, y: 1}
+  - {x: 0, y: -1}
+  - {x: 0, y: 2}
+  - {x: 2, y: -1}
+  - {x: -2, y: 0}
+  map: {fileID: 21300000, guid: 4d90c9d8c5be1f44f99165effc1a5138, type: 3}
