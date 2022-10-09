@@ -35,6 +35,10 @@ public class LevelHandler : MonoBehaviour
             if(currLevel > 0){
                 //clears the dictionary used.
                 mapHandler.resetMap();
+                //added this to add TextSFX at the start of a new map
+                FindObjectOfType<AudioManager>().Play("TextSFX");
+                //fixes bug that would skip messages after loading in a new map
+                FindObjectOfType<UIAssistant>().messageArrayNumber = 0;
             }
             if (Levels.Length != 0 && uiAssistant != null){
                 uiAssistant.messageArray = Levels[currLevel].text;

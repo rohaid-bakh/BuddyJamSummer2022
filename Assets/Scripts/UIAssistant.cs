@@ -15,7 +15,7 @@ public class UIAssistant : MonoBehaviour
 
     [SerializeField] float textSpeed;
 
-    [SerializeField] int messageArrayNumber = 0;
+    public int messageArrayNumber = 0;
 
     // [SerializeField] Image npcImage;
 
