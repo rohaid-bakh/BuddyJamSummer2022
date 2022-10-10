@@ -11,7 +11,7 @@ public enum Locations
     Hospital,
     GrasshopperStadium,
     BearClaw,
-    HopperArcade,
+    Arcade,
     HornetsNest,
     FoxsDen,
     None

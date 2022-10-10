@@ -13,23 +13,36 @@ MonoBehaviour:
   m_Name: Map 0
   m_EditorClassIdentifier: 
   text:
-  - 'Welcome! '
-  - 'You are a map maker! '
-  - 'You''ll be listening to what customers have to say and be piecing together a
-    map for them, it''s that easy! '
-  - "Customer instructions won't always be clear, sometimes they'll just make plain
-    conversation\u2026 but there's always information to gather regardless. "
-  - 'You''ll use that info to drag icons on to their rightful place on the grid map.
-    If all things go well, you''ll gain some satisfied customers and be able to move
-    on to the next guests. '
-  - 'You can try it now. Go ahead and place <b>Ned''s Noodle shop in the middle of
-    the map</b> and <b>Bee''s Knees Mini Mart just two blocks west</b> of there. '
-  - 'Then place the <b>arcade 3 blocks away from the noodle shop, above the mini
-    mart</b>. When you''re done, press <b>finish</b>. If things look good you''ll
-    move on to a real customer! '
-  - 'Remember, you don''t count diagonally when measuring out blocks, it''s only
-    up, down, side to side.  '
-  characters: 0100000001000000010000000100000001000000010000000100000001000000
+  - 'Welcome to Legend Maker Express and congratulations on your new role as cartographer!
+
+'
+  - "In your new position, it\u2019s your responsibility to listen to each of the
+    customers. They will provide you with clues as to where each building is located. "
+  - 'From their descriptions you should be able to piece together a full functioning
+    map of the city.
+
+'
+  - "Instructions won\u2019t always be simple and concise. So, you will need to pay
+    close attention to each of the customer\u2019s comments.\n"
+  - 'Once a customer has provided you with directions, you will drag the location
+    icon onto the gridded plane. You will place each of the icons in the area you
+    believe the customer was referencing.
+
+'
+  - " If successful, you will move on to the next series of maps..\n\nLet\u2019s
+    give it a go!\n\n"
+  - "Place Ned\u2019s Noodle Shop in the middle of the map.\n"
+  - "Now, put the Bee\u2019s Knees Mini Mart 2 blocks West of the Noodle Shop.\r\n"
+  - "Lastly, Rock\u2019s Arcade is 3 blocks away from the Noodle Shop, above the
+    Bee\u2019s Knees Mini Mart.\r\n"
+  - Remember, distance will never be measured diagonally, only up, down, and from
+    side to side.
+  - 'Press the finished button to see how you did!
+
+'
+  - Remember, distance will never be measured diagonally, only up, down, and from
+    side to side.
+  characters: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   places: 000000000100000007000000
   coordinates:
   - {x: 0, y: 0}
